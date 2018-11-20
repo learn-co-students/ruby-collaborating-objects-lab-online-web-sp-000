@@ -9,6 +9,11 @@ class MP3Importer
   end
   
   def files
-    Dir["#{path}/*.mp3"].each { |i| @files << i.split("/")[1]}
+    temp = Dir["#{path}/*.mp3"].each { |i| @files << i.split("/").last}
+    @files
+  end
+  
+  def import
+    files.each{|i| Song.new_by_filename(i)}
   end
 end
