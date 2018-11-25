@@ -2,7 +2,7 @@ require 'pry'
 
 class Artist
 
-attr_accessor :name, :song
+attr_accessor :name, :songs
 
   @@all = []
 
@@ -13,11 +13,6 @@ attr_accessor :name, :song
 
   def add_song(song)
     @songs << song
-    song.artist = self
-  end
-
-  def songs
-    @songs
   end
 
   def self.all
@@ -26,15 +21,14 @@ attr_accessor :name, :song
 
   def save
    @@all << self
+   self
   end
 
   def self.find_or_create_by_name(name)
-    self.all.detect do |artist| artist.name == name || self.new(name).save
-    end
+    self.all.detect {|artist| artist.name == name } || self.new(name).save
   end
 
   def print_songs
-
     @songs.each {|song| puts song.name }
   end
 
