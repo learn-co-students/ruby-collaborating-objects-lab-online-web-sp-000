@@ -6,7 +6,7 @@ class MP3Importer
   end
 
   def files
-    @files = Dir.entries("#{path}/*.mp3").collect {|song| song.chomp(".mp3")}
+    @files = Dir.glob("#{path}/*.mp3").collect {|song| song.chomp(".mp3")}
   end
 
 end
