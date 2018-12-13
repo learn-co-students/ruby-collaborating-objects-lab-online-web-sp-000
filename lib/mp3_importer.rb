@@ -1,3 +1,4 @@
+require 'pry'
 class MP3Importer
   attr_accessor :path
 
@@ -6,7 +7,11 @@ class MP3Importer
   end
 
   def files
-    @files = Dir.glob("#{path}/*.mp3").collect {|song| song.chomp(".mp3")}
+    @files = Dir.glob("#{path}/*.mp3").collect {|song| song.gsub(path+"/", "")}
+  end
+
+  def import
+    files.each {|filename| Song.new_by_filename(filename)}
   end
 
 end
