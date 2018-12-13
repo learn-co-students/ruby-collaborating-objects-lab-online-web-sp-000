@@ -31,11 +31,11 @@ class Artist
   
   def self.find_or_create_by_name(name)
   @@all.each do |a|
-    if name == a 
+    if name == a.name 
       return a 
     else Artist.new(name)
-  end
-end
+    end
+    end
   end
   
 end
