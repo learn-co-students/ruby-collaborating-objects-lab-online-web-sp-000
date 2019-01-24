@@ -8,10 +8,6 @@ class Artist
     @songs = []
   end
 
-  def songs
-    @songs
-  end
-
   def add_song(song)
     @songs << song
   end
@@ -26,12 +22,11 @@ class Artist
 
   def self.find_or_create_by_name(name)
     @@all.detect do |artist|
-      if artist.name ==name
+      if artist.name == name
         artist
       else
-        artist = Artist.new(name)
-        @@all << artist
-        artist.name = name
+        artist = self.new(name)
+        artist.save
         artist
       end
     end
