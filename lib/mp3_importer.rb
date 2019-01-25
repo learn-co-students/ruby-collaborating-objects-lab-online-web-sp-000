@@ -1,4 +1,5 @@
 class MP3Importer
+
   attr_accessor :path
 
   def initialize(path)
@@ -7,7 +8,7 @@ class MP3Importer
 
   def files
     files = []
-    Dir.new(self.path).each do |file|
+    Dir.new(@path).each do |file|
       files << file if file.include? "mp3"
     end
     files
@@ -15,6 +16,5 @@ class MP3Importer
 
   def import
     self.files.each { |filename| Song.new_by_filename(filename)}
-    #list_of_filenames.each { |filename| Song.new_by_filename(filename)}
   end
 end
