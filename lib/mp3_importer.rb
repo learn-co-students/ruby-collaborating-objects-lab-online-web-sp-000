@@ -10,7 +10,6 @@ class MP3Importer
   end
 
   def files
-#binding.pry
     Dir["#{@path}/*.mp3"].collect do |file|
       file_array = file.split("/")
       file_array[4]
@@ -18,7 +17,9 @@ class MP3Importer
   end
 
   def import
-    Song.new_by_filename(some_filename)
+    self.files.each do |file|
+      Song.new_by_filename(file)
+    end
   end
 
 end

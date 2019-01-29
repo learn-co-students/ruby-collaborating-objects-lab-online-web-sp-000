@@ -28,9 +28,11 @@ class Artist
 
   def self.find_or_create_by_name(name)
     if self.find_song(name)
+      new_artist = self.find_song(name)
     else
-      Artist.new(name)
+      new_artist = Artist.new(name)
     end
+    new_artist
   end
 
   def print_songs

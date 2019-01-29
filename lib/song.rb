@@ -1,3 +1,4 @@
+require 'pry'
 class Song
   attr_accessor :name, :artist
 
@@ -6,25 +7,24 @@ class Song
   end
 
   def artist=(artist_name)
-    if artist_exists?(artist_name)
+
+    if artist_name.class == String
+      @artist = Artist.find_or_create_by_name(artist_name)
     else
-      @artist = Artist.new(artist)
+      @artist = artist_name
     end
+
+    @artist.add_song(self)
+
+    self
+
   end
 
-  def artist_exists?(artist_name)
-    #I think the return value on this is wrong...
-    Artist.all.collect do |artist|
-      if artist.name == artist_name
-        @artist = artist
-      else
-        false
-      end
-    end
-  end
-
-  def new_by_filename
-
+  def self.new_by_filename(path)
+    file_array = path.split(" - ")
+    new_song = self.new(file_array[1])
+    new_song.artist=(file_array[0])
+    new_song
   end
 
 end
