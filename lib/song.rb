@@ -1,4 +1,5 @@
 require 'pry'
+
 class Song
   attr_accessor :name, :artist
 
@@ -15,8 +16,6 @@ class Song
     end
 
     @artist.add_song(self)
-
-    self
 
   end
 
