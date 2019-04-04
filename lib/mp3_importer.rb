@@ -1,5 +1,3 @@
-require 'pry'
-
 class MP3Importer
   attr_accessor :path
   
@@ -9,5 +7,11 @@ class MP3Importer
   
   def files
     Dir.children("./spec/fixtures/mp3s")
+  end
+  
+  def import
+    files.each do |file|
+      Song.new_by_filename(file)
+    end
   end
 end
