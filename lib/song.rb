@@ -20,9 +20,16 @@ class Song
     artist_name = field_arr[0]
     song_title = field_arr[1]
     song = self.new(song_title)
-    song.artist = Artist.find_or_create_by_name(artist_name)    # song's artist = artist object
-    song.artist.add_song(song)                                  # artist object has song added to its songs list
-    song.artist.save                                            # save the artist to @@all artists
+    
+    # song.artist = Artist.find_or_create_by_name(artist_name)    # song's artist = artist object
+    # song.artist.add_song(song)                                  # artist object has song added to its songs list
+    # song.artist.save                                            # save the artist to @@all artists
+
+    song.artist = Artist.find_or_create_by_name(artist_name).tap do |a|
+      a.add_song(song)
+      a.save
+    end
+    
     song                                                        # return the song instance
   end
   
