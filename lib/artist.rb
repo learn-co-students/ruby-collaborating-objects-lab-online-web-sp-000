@@ -2,10 +2,11 @@ require "pry"
 class Artist
   attr_accessor :name, :songs, :all
   
+  @@all = []
   def initialize(name)
     @name = name
     @songs = []
-    @@all = []
+    self.save
   end
   
   def name
@@ -29,6 +30,7 @@ class Artist
     @@all << self
   end
 
+  
   def self.find_or_create_by_name(d_name)
     if self.all.find{|person| person.name == d_name}
       name
@@ -39,7 +41,7 @@ class Artist
   end
   
   def print_songs
-    self.all.each do|person| 
+    self.all.each do |person| 
       puts "#{person.name}"
     end
   end
