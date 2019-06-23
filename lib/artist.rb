@@ -33,7 +33,7 @@ class Artist
   
   def self.find_or_create_by_name(d_name)
     if self.all.find{|person| person.name == d_name}
-      name
+      self.all.find{|person| person.name == d_name}
     else
       name = self.new(d_name)
       name
@@ -41,7 +41,7 @@ class Artist
   end
   
   def print_songs
-    self.all.each do |person| 
+    @songs.each do |person| 
       puts "#{person.name}"
     end
   end
