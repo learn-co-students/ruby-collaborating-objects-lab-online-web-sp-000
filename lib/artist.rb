@@ -1,6 +1,6 @@
 require 'pry'
-require_relative "../lib/song.rb"
-require_relative "../lib/mp3_importer.rb"
+# require_relative "../lib/song.rb"
+# require_relative "../lib/mp3_importer.rb"
 class Artist
 
   attr_accessor :name, :songs
@@ -28,9 +28,17 @@ class Artist
     @@all
   end
 
-  def self.find_or_create_by_name(name)
-    artist_exists = self.all.find{ |artist| artist.name == name }
-    artist_exists ? artist_exists :  Artist.new(name)
+  def self.create(name)
+    artist = self.new(name)
+    artist.save
+    artist
   end
+
+  def self.find_or_create_by_name(name)
+    # binding.pry
+    artist_exists = self.all.find{ |artist| artist.name == name }
+    artist_exists ? artist_exists :  self.create(name)
+  end
+
 # binding.pry
 end
