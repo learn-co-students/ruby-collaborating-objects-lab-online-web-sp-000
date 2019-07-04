@@ -1,20 +1,22 @@
+require "pry"
 class MP3Importer 
-  attr_accessor :path
+  attr_accessor :path, :files
   
   def initialize(route)
     @path = route
   end
-  
-  def path
-  @path
-  end
-  
+ 
   def files
-    Dir[@path]
+    filename = []
+    entries = Dir.glob("#{@path}/*.mp3")
+    entries.map {|file| a = file.split("#{@path}/")
+      filename << a[1]}
+    return filename
+       
   end
   
   def import 
-    
+    files.each {|file| Song.new_by_filename(file)}
   end
   
   
