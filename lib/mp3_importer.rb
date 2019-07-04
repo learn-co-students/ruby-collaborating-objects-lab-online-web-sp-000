@@ -6,7 +6,7 @@ class MP3Importer
   end
   #loads all the mp3 files in the path directory
   def files
-    @file_array = Dir.entries(@path).select{|file| file.include?(".mp3")}
+    @files = Dir.entries(@path).select{|file| file.include?(".mp3")}
   #normalizes the filename to just the mp3 filename with no path
   end
   #import files into a library by creating (instantiating) new Songs from a filename!

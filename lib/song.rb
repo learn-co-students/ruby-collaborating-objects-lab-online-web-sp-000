@@ -1,5 +1,5 @@
 class Song
-attr_accessor :name, :artist
+attr_accessor :artist, :name
 
 def initialize(name)
   @name = name
@@ -16,5 +16,5 @@ def artist_name=(name)
   artist.add_song(self)
 end
 
-end 
+end
 #"by filename" is a hint that we need parameter to pass in

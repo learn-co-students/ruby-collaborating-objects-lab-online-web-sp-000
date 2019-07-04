@@ -7,12 +7,12 @@ class Artist
     @songs = []
   end
 
-  def add_song(song)
-    @songs << song
-  end
-
   def self.all
     return @all
+  end
+
+  def add_song(song)
+    @songs << song
   end
 
   def save
@@ -20,18 +20,25 @@ class Artist
   end
 
   def self.find_or_create_by_name(name)       #name parameter
-    self.find(name) ? self.find(name) : self.create(name)       #Ternary operator to maintain uniqueness
+    if self.find(name)
+      self.find(name)
+    else
+      self.create(name)
+    end
   end
+    #self.find(name) ? self.find(name) : self.create(name)       #Ternary operator to maintain uniqueness
 
   def self.find(name)
-    self.all.find {|artist| artist.name == name}
+    self.all.detect {|artist| artist.name == name}          #calls .self.all method in which returns @@all, and we search it
   end
 
   def self.create(name)
-    self.new(name).tap {|artist| artist.save}
+    artist = Artist.new(name)
+    artist.save
+    return artist
   end
 
   def print_songs
-    songs.each {|song| puts song.name}
+    self.songs.each {|song| puts song.name}
   end
 end
