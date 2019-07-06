@@ -1,6 +1,6 @@
 require "pry"
 class Song 
-  attr_accessor :artist, :name
+  attr_accessor :name, :artist
   
   @@all = []
   
@@ -13,18 +13,20 @@ class Song
     @@all 
   end
   
- def artist_name(name)
-    Artist.find_or_create_by_name(name)
+  def artist_name(name)
+  new_artist = Artist.find_or_create_by_name(name)
+  new_artist.add_song(self)
+  new_artist.save
+  
   end
   
   def self.new_by_filename(file)
     array = file.split(" - ")
     new_song = self.new(array[1])
     new_song.artist_name(array[0])
-   
-  new_song
-    
+    new_song
   end
-    
   
+ 
+   
 end

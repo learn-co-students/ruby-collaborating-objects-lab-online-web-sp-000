@@ -1,9 +1,9 @@
 require "pry"
 class MP3Importer 
-  attr_accessor :path, :files
+  attr_accessor :path
   
-  def initialize(route)
-    @path = route
+  def initialize(path)
+    @path = path
   end
  
   def files
@@ -12,7 +12,6 @@ class MP3Importer
     entries.map {|file| a = file.split("#{@path}/")
       filename << a[1]}
     return filename
-       
   end
   
   def import 
