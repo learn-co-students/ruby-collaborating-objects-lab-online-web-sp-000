@@ -6,7 +6,7 @@ class Song
     @name = name
     @artist = artist
     @@all << self
-#    Artist.add_song(self)
+    artist_name=(name)
   end
 
   def self.all
@@ -26,6 +26,14 @@ class Song
     name = file_array[1]
     artist = file_array[0]
     Song.new(name, artist)
+  end
+
+  def artist_name=(name)
+    if (self.artist.nil?)
+      self.artist = Artist.new(name)
+    else
+      self.artist.name = name
+    end
   end
 
 end
