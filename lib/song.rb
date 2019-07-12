@@ -4,36 +4,27 @@ class Song
 
   def initialize(name, artist = nil)
     @name = name
-    @artist = artist
+    @artist = artist if artist != nil
     @@all << self
-    artist_name=(name)
   end
 
   def self.all
     @@all
   end
 
-  def artist_name
-    if self.artist == nil
-      nil
-    else
-      self.artist.name
-    end
-  end
-
   def self.new_by_filename(file)
     file_array = file.split(" - ")
     name = file_array[1]
     artist = file_array[0]
-    Song.new(name, artist)
+
+    new_song = Song.new(name)
+    new_song.artist_name = artist
+    new_song
   end
 
   def artist_name=(name)
-    if (self.artist.nil?)
-      self.artist = Artist.new(name)
-    else
-      self.artist.name = name
-    end
+    self.artist = Artist.find_or_create_by_name(name)
+    self.artist.add_song(self)
   end
 
 end
