@@ -1,4 +1,4 @@
-describe 'Artist' do
+  describe 'Artist' do
   let(:artist) {Artist.new('Michael Jackson')}
 
   describe '#initialize with #name' do
