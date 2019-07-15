@@ -8,10 +8,15 @@ class MP3Importer
   end
 
   def files
-    Dir["./spec/fixtures/**/*.mp3"]
+    files = Dir["./spec/fixtures/mp3s/*.mp3"]
+    files.each do |filename|
+      path_name = filename.slice!("./spec/fixtures/mp3s/")
+      filename
+    end
   end
 
   def import
+    
   end
 
 end
