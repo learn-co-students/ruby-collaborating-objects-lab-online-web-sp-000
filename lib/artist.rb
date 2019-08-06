@@ -9,12 +9,10 @@ class Artist
   end
 
   def add_song(song)
-    #song.artist = self
     @songs << song
   end
 
   def add_song_by_name(song)
-    #newsong = Song.new(song)
     binding.pry
     add_song(song)
   end
@@ -23,7 +21,6 @@ class Artist
     collection = @@all.select{|n| n.name == name}
     if collection.size == 0
       newartist = Artist.new(name)
-      @@all << newartist
       return newartist
     end
     collection[0]
@@ -36,12 +33,13 @@ class Artist
   end
 
   def self.song_count
-    #binding.pry
     Song.all.size
   end
 
   def save
-    @@all << self
+    if @@all.any?{|n| n.name == @name} == false
+      @@all << self
+    end
   end
 
   def self.all

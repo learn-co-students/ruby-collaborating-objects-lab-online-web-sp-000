@@ -30,7 +30,7 @@ class Song
     songname = Song.get_info(info, "songname")
     newsong = Song.new(songname)
     newsong.artist = Artist.find_or_create_by_name(Song.get_info(info, "artist"))
-    binding.pry
+    #binding.pry
     newsong
   end
 
