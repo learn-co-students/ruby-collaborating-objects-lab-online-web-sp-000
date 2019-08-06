@@ -9,25 +9,12 @@ class MP3Importer
 
   def import
     collection = @files.collect{|n| n.match(/\w*.*(?=[.])/)}
-    collection.each do |i|
-      songname = MP3Importer.get_info(i.to_s, "songname")
-      artist = MP3Importer.get_info(i.to_s, "artist")
-      genre = MP3Importer.get_info(i.to_s, "genre")
+    @files.each do |i|
+      Song.new_by_filename(i)
     end
-    binding.pry
 
   end
 
-  def self.get_info(info, infotype)
-    collection = info.split(" - ")
-    case infotype
-      when "artist"
-        return collection[0].to_s
-      when "songname"
-        return collection[1].to_s
-      when "genre"
-        return collection[2].to_s
-    end
-  end
+
 
 end

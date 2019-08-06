@@ -14,8 +14,9 @@ class Artist
   end
 
   def add_song_by_name(song)
-    newsong = Song.new(song)
-    add_song(newsong)
+    #newsong = Song.new(song)
+    binding.pry
+    add_song(song)
   end
 
   def self.find_or_create_by_name(name)
@@ -25,6 +26,7 @@ class Artist
       @@all << newartist
       return newartist
     end
+    collection[0]
   end
 
   def print_songs
