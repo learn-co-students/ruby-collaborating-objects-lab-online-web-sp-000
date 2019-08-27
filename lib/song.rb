@@ -1,9 +1,13 @@
 class Song
-  attr_accessor :name
+  attr_accessor :name, :artist
   @@all = []
 
   def initialize(name)
     @name = name
+    save
+  end
+
+  def save
     @@all << self
   end
 
@@ -11,18 +15,16 @@ class Song
     @@all
   end
 
-  def artist_name=(artist_name)
-    Artist.all.select do |artist|
-      if artist.name == artist_name
-        self.artist = artist
-      else
-        new_artist = Artist.new(artist_name)
-        new_artist = self.artist
-      end
-    end
+  def self.new_by_filename(filename)
+    artist, title = filename.split(" - ")
+    new_song = self.new(title)
+    new_song.artist_name = artist
+    new_song
   end
 
-  def new_by_filename
+  def artist_name=(artist_name)
+    self.artist = Artist.find_or_create_by_name(artist_name)
+    artist.add_song(self)
   end
 
 end
