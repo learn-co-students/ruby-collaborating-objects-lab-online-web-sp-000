@@ -35,8 +35,8 @@ describe 'Artist' do
       dirty_diana = Song.new("Dirty Diana")
       billie_jean = Song.new("Billie Jean")
       piano_man = Song.new("Piano Man")
-      dirty_diana.artist = artist
-      billie_jean.artist = artist
+      artist.add_song(dirty_diana)
+      artist.add_song(billie_jean)
       expect(artist.songs).to eq([dirty_diana, billie_jean])
     end
   end
