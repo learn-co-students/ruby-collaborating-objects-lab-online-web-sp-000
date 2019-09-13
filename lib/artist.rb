@@ -14,16 +14,15 @@ class Artist
   end
 
   def songs
-
     Song.all.select {|song| song.artist == self}
   end
 
   def self.find_or_create_by_name(name)
-    if (self.name.nil?)
-        self.name = Artist.new(name)
+     find_artist= self.all.find {|artist| artist.name == name}
+      if find_artist #returns true
+        find_artist
     else
-        self.artist.name = name
-        binding.pry
+        Artist.new(name)
     end
   end
 
@@ -32,6 +31,6 @@ class Artist
   end
 
   def print_songs
-    @all
+   self.songs.each {|song| puts song.name} #the self at the beginning is derived from the Songs class via the song method so now we can iterate through it like any instance.
   end
 end
