@@ -8,10 +8,6 @@ class Artist
     @@all << name
   end
 
-  def self.all
-    @@all
-  end
-
   def add_song(song)
     song.artist = self
   end
@@ -26,6 +22,10 @@ class Artist
     else
         self.artist.name = name
     end
+  end
+
+  def self.all
+    @@all
   end
 
   def print_songs
