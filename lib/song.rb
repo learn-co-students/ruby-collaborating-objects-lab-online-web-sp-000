@@ -30,9 +30,11 @@ class Song
   end
   
   def artist_name=(name)
+    #turn artist name into string as artist object
+    binding.pry
+    Artist.new(name) #creates a new artist instance
     
-    #finds Artist instance and assigns it to Song's artist attribute
-    #if Artist doesn't exist, create Artist instance and assign it to song's artist attribute
+    #song.artist = self
   end
   
 end

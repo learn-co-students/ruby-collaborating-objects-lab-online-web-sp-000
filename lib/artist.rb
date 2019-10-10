@@ -26,14 +26,17 @@ class Artist
   end
   
   def self.find_or_create_by_name(name)
-    self.all.find {|song_name| song_name == name}
-    #takes in name
-    #find artist instance that has that name
-    #if doesn't exist yet, create ope
-    #return instance of artist with name attribute filled out
+    if self.find(name)
+      self.find(name)
+    else self.new(name)  
+    end
   end
  
+  def self.find(name)
+    self.all.find {|song_name| song_name == name}
+end
+
   def print_songs
-    
+    songs.each {|song| puts song.name}
   end
 end
