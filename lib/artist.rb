@@ -25,6 +25,13 @@ class Artist
     song.artist = self
   end
   
+  def self.find_or_create_by_name(name)
+    self.all.find {|song_name| song_name == name}
+    #takes in name
+    #find artist instance that has that name
+    #if doesn't exist yet, create ope
+    #return instance of artist with name attribute filled out
+  end
  
   def print_songs
     
