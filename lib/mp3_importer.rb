@@ -6,7 +6,7 @@ class MP3Importer
   end
   
   def files
-    #takes filename, makes it into just mp3 with no path
+    files = Dir.entries(@path).find_all {|info| info.include?"mp3"}
   end
 
   def import
