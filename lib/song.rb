@@ -17,16 +17,11 @@ class Song
   end
   
   def self.new_by_filename(filename)
-    #parse filename to find song and artist
-    #create new song instance using string from filename
-    #associate new song with artist
-    #return new song instance
-  
     name = filename.split(" - ")[1]
-    song = self.new(name)
     artist = filename.split(" - ")[0]
-    song.artist = artist
-    song
+    new_song = self.new(name)
+    new_song.artist_name = artist
+    new_song
   end
   
   def artist_name=(name)
