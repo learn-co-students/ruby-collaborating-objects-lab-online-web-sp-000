@@ -32,6 +32,13 @@ class Artist
     result.artist
   end
   
+  def self.find_or_create_artist(artist)
+    return Artist.new(artist) if @@all.nil?
+    result = @@all.find { |art| art.name == artist}
+    return Artist.new(artist) if result.nil?
+    result
+  end
+  
   def print_songs
     self.songs.each { |song| puts song.name }
   end
