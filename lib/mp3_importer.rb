@@ -1,1 +1,15 @@
-class mp3_importer.#!/usr/bin/env ruby -wKU
+class MP3_Importer
+    @@path
+  def initialize(path)
+
+  end
+
+  def files
+  end
+
+  def import
+    Song.new_by_filename(filename)
+  end
+
+
+end
