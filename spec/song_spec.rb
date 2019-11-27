@@ -1,5 +1,6 @@
+require 'pry'
 describe 'Song' do
-  
+
   before(:example) {
     Song.class_variable_set(:@@all, [])
   }
@@ -52,6 +53,7 @@ describe 'Song' do
       expect(new_instance.artist.name).to eq('Michael Jackson')
       expect(Artist.all.size).to eq(1)
       expect(Artist.all.first.songs.empty?).to eq(false)
+      binding.pry
     end
   end
 
@@ -73,5 +75,3 @@ describe 'Song' do
     end
   end
 end
-
-
