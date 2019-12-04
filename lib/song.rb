@@ -18,11 +18,8 @@ end
   end
 
   def self.new_by_filename(filename)
-   #binding.pry
-  #file = Artist.new(filename.split(" - ")[1])
-  artist = Song.new(filename.split(" - ")[1])
 
-
+  song = Song.new(filename.split(" - ")[1])
   #filename.song = self
 end
 
