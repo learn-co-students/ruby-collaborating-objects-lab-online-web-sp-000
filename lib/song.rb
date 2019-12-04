@@ -18,16 +18,16 @@ end
   end
 
   def self.new_by_filename(filename)
-
+#binding.pry
   song = Song.new(filename.split(" - ")[1])
-  #filename.song = self
+  song.artist_name=(filename.split(" - ")[0])
+  song
 end
 
-    def artist_name(artist_name)
-      binding.pry
-      @@all.find {|n| n == self.artist_name} || Song.new(artist_name)
-
-
+    def artist_name=(artist_name)
+    artist = Artist.find_or_create_by_name(artist_name)
+   artist.add_song(self)
     end
+
 
 end
