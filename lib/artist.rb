@@ -6,6 +6,7 @@ class Artist
 
   @@all = []
 
+  #get in the habit of writing a #save method to do the second step so the app is more abstract
   def initialize(name)
     @name = name
     @@all << self
@@ -23,9 +24,10 @@ class Artist
     song.artist = self
   end
 
+  #break this into two steps next time.  A method called FIND which would do first step below
   def self.find_or_create_by_name(artist_name)
     existing_artist = self.all.detect {|artist_obj| artist_obj.name == artist_name}
-    existing_artist ? existing_artist : Artist.new(artist_name)
+    existing_artist ? existing_artist : self.new(artist_name)
   end
 
   def print_songs
