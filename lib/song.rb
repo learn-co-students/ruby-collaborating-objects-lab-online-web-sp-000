@@ -15,10 +15,10 @@ class Song
 
   def self.new_by_filename(file)
     rows = file.split("-")
-    artist_name = rows[0].strip
+    artist = rows[0].strip
     song = rows[1].strip
     new_song = Song.new(song)
-    new_song.artist = artist_name
+    new_song.artist_name = artist
     new_song
   end
 
