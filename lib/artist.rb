@@ -1,12 +1,21 @@
 class Artist
 
-  attr_accessor :name
+  attr_accessor :name, :songs
 
   @@all = []
 
   def initialize(name)
     @name = name
-    # @songs = []
+    @songs = []
+  end
+
+  # instance method receives an instance of a Song and associates it belongs to this Artist instance.
+  def add_song(song)
+    @songs << song
+    # Song.name = self
+  end
+
+  def save
     @@all << self
   end
 
@@ -15,11 +24,7 @@ class Artist
     @@all
   end
 
-  # instance method receives an instance of a Song and associates it belongs to this Artist instance.
-  def add_song(song)
-    # @songs << song
-    Song.name = self
-  end
+
 
   # This instance method returns an Array of all songs that belong to this Artist instance.
   # This method should get all existing Song instances from Song and select only the ones that are associated with this Artist instance.
