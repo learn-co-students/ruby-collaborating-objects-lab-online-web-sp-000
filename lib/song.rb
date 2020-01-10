@@ -13,26 +13,27 @@ class Song
     @@all
   end
 
-  # return the new song instance
+
   # file_name = 'Michael Jackson - Black or White - pop.mp3'
   def self.new_by_filename(file_name)
     # parse a filename to find the song name and artist name
     title = file_name.split(" - ")[1]
     musician = file_name.split(" - ")[0]
     # create a new song instance using the string we gathered from the filename
-      # self.new(title)
+    # song_title is my new song instance
+      song_title = self.new(title)
     # associate that new song with an artist. Use the artist attribute accessor to assign this
-    @name = self.new(title)
+      song_title.artist_name = musician
+    # return the new song instance
+      song_title
+
   end
 
-  # accepts an artist's name,
-  # finds or creates an Artist instance and assigns it to the Song's artist attribute
+  # accepts an artist's name
   def artist_name=(name)
-    if (self.artist.nil?)
-      self.artist = Artist.new(name)
-    else
-      self.artist.name = name
-    end
+    # finds or creates an Artist instance and assigns it to the Song's artist attribute
+    self.artist = Artist.find_or_create_by_name(name)
+    self.artist.add_song(self)
   end
 
 end
