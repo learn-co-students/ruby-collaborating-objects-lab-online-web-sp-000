@@ -9,11 +9,6 @@ class Artist
     @@all << self
   end
 
-  # instance method receives an instance of a Song and associates it belongs to this Artist instance.
-  def add_song(song)
-    song.artist = Song.new(song)
-  end
-
   # class method should return all Artist instances.
   def self.all
     @@all
@@ -22,7 +17,12 @@ class Artist
   # This instance method returns an Array of all songs that belong to this Artist instance.
   # This method should get all existing Song instances from Song and select only the ones that are associated with this Artist instance.
   def songs
-    Song.all.select { |artist| artist == "Michael Jackson"}
+    Song.all.select { |song| song.artist == self}
+  end
+
+  # instance method receives an instance of a Song and associates it belongs to this Artist instance.
+  def add_song(song)
+    song.artist = self
   end
 
   # This class method should take the name that is passed in (a string), and do one of two things.
