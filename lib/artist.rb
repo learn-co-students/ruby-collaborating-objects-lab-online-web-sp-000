@@ -1,4 +1,4 @@
-require 'pry'
+
 
 class Artist
 
@@ -16,6 +16,7 @@ class Artist
     @@all << self
   end
 
+
   def add_song(song)
     song.artist = self
   end
@@ -30,15 +31,29 @@ class Artist
   end
 
   def self.find_or_create_by_name(name)
-    self.find_by_name || self.create_by_name
+    artist = @@all.detect{|artist| artist.name == name}
+    if !artist
+      artist = Artist.new(name)
+    end
+    return artist
   end
 
-  def self.find_by_name(name)
-    self.all.detect  {|a| a.name == name}
+  def add_song(song)
+    #self.songs << song
+    song.artist = self
+    #binding.pry
   end
 
-  def self.create_by_name(name)
-    Artist.name(name)
+  def add_song_by_name(song_name)
+  s = Song.new(song_name)
+  self.add_song(s)
+  end
+  def self.all
+    @@all
+  end
+  
+  def print_songs
+    self.songs.each { |song| puts song.name}
   end
 
 end
