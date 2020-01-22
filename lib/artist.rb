@@ -1,3 +1,5 @@
+require 'pry'
+
 class Artist
     attr_accessor :name 
     
@@ -20,33 +22,16 @@ class Artist
         song.artist = self
     end
 
-     def save
+    def save
         self.class.all << self
-      end
+        self
+    end
     
-      def self.create
-        song = Song.new
-        song.save
-        song
-      end
-    
-      def self.new_by_name(song_name)
-        song = self.new
-        song.name = song_name
-        song
-      end
-    
-      def self.create_by_name(artist_name)
-        artist = self.create
-        artist.name = artist_name
-        artist 
-      end
-    
-      def self.find_by_name(artist_name)
-        self.all.detect{|a| a.name == artist_name}
-      end
-    
-      def self.find_or_create_by_name(artist_name)
-        self.find_by_name(artist_name) || self.create_by_name(artist_name)
-      end
+    def self.find_or_create_by_name(name)
+        self.all.find {|artist| artist.name == name} || Artist.new(name).save
+    end
+
+    def print_songs
+        self.songs.each {|song| puts song.name} 
+    end 
 end 
