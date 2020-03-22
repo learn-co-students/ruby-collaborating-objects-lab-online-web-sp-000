@@ -40,4 +40,10 @@ class Artist
     self.new(name)
   end
 
+  def print_songs
+    self.songs.each do |song|
+      puts "#{song.name}"
+    end
+  end
+
 end

@@ -19,7 +19,7 @@ class Song
 
     song = Song.new(song_info)
     song.artist_name = artist_info
-    artist.songs << song
+    song.artist.songs << song
     song
   end
 
