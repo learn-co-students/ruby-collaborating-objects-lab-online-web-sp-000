@@ -20,10 +20,12 @@ class Song
     split_file_name = file_name.split(" - ")
     song = self.new(split_file_name[1])
     artist = Artist.find_or_create_by_name(split_file_name[0])
+    artist.add_song(song)
     song
   end
   
   def artist_name=(artist_name)
+    Artist.find_or_create_by_name(name)
   end
   
 end
