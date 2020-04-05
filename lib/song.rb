@@ -1,3 +1,4 @@
+require 'pry'
 class Song
   attr_accessor :name, :genre, :artist
 
@@ -24,12 +25,12 @@ class Song
     self.artist = temp_artist
   end
 
-
-
   def self.new_by_filename(file)
-
+    song = nil
+    artistName = file.split(" - ")[0]
+    songName = file.split(" - ")[1].split(".mp3")[0]
+    song = Song.new(songName)
+    song.artist_name = artistName
+    song
   end
-
-
-
 end
