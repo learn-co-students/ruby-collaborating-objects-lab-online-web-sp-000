@@ -20,9 +20,9 @@ class Artist
   
   def self.find_or_create_by_name(name)
     if @@all == nil
-      s = Artist.new(name)
+      a = self.new(name)
     else
-      @@all.each {|instance| instance.name == name}
+      @@all.find {|instance| instance.name == name}
     end
   end
   
