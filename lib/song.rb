@@ -29,7 +29,8 @@ class Song
   
   def artist_name=(name)
     if Artist.all.find{|artist| artist.name == name}
-      Artist.all.find{|artist| artist.name == name}
+      artist = Artist.all.find{|artist| artist.name == name}
+      self.artist = artist 
     else 
       new_artist = Artist.new(name)
       self.artist = new_artist
