@@ -4,7 +4,6 @@ class Song
   @@all = []
 
   def initialize(name)
-
     @name = name
     @@all << self
   end
@@ -27,8 +26,8 @@ class Song
     #b. send an Artits's name (a string - from parsed filename) so use Artist.find_or_create_by_name
   #2. assign the song to the artist (use Artist.add_song(song) method)
     def artist_name=(artist) #belongs to an artist
-          self.artist = Artist.find_or_create_by_name(name)
-          self.artist.add_song(song)
+          self.artist = Artist.find_or_create_by_name(artist)
+          self.artist.add_song(self)
     end
 
 end
