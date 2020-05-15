@@ -1,3 +1,4 @@
+require 'pry'
 class Song
   attr_accessor :name, :artist
   @@all = []
@@ -21,18 +22,19 @@ class Song
     end
 
     def self.new_by_filename(file)
-      new_by_filename = Song.new(file)
-      # new_by_filename.split(" - ")
 
+      filename = file.split(" - ")
+      r = Song.new(filename[1])
+      r.name = filename[1]
+      r.artist_name = filename[0]
+      r
+# binding.pry
     end
 
     def artist_name=(artist_name)
-      artist.all.each do |e|
-        if e.name == artist_name
-          song.name = artist_name
-        else
-          song.Artist.new = artist_name
-        end
-      end
-    end
+    e = Artist.find_or_create_by_name(artist_name)
+# binding.pry
+        e.add_song(self)
+
   end
+end
