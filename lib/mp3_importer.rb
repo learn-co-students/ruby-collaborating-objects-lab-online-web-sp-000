@@ -9,6 +9,7 @@ attr_accessor :path
     Dir.entries("./spec/fixtures/mp3s").select do |e|
        if e.include?("mp3")
          e = e.split(".mp3")
+         binding.pry
   end
 
     end
