@@ -20,13 +20,14 @@ class Artist
         #binding.pry
     end
     def songs
-        #binding.pry
-        Song.all.select {|song| 
+        
+        artist_songs = Song.all.select {|song| 
             if song.artist == nil
             else
                 song.artist == self
             end
-        }
+        }#.each {|song| puts song.name}
+        #binding.pry
     end
     def self.find_or_create_by_name(name)
         
@@ -38,12 +39,12 @@ class Artist
         end
     end
     def print_songs
-        binding.pry
-        puts Song.all.select {|song| 
+        #binding.pry
+        Song.all.select {|song| 
             if song.artist == nil
             else
                 song.artist == self
             end
-        }
+        }.each {|song| puts song.name}
     end
 end
