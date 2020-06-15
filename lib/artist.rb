@@ -18,7 +18,8 @@ class Artist
   end
   
   def add_song(song)
-    song.artist = self    
+    song.artist = self   
+    # how can we call this?  what is the scope?
   end
   
   def songs
@@ -27,7 +28,7 @@ class Artist
     end
   end
   
-  require 'pry'
+
   def self.find_or_create_by_name(name)
     find_artist = self.all.find do |artist_name|
       artist_name.name == name
@@ -37,10 +38,9 @@ class Artist
       return find_artist
     else
       new_artist = self.new(name)
-      new_artist.save
+      # new_artist.save
       new_artist
     end
-    binding.pry
   end
   
   
