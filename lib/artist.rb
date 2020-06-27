@@ -22,11 +22,12 @@ def self.all
 end
 
 def add_song(song)
-   Song.new(song)
+  song.artist = self
+  # @songs << song
 end
 
 def songs
-  @songs = Song.all.select {|song| song.artist == self.name}
+  @songs = Song.all.select {|song| song.artist == self}
   return @songs
 end
 
@@ -36,8 +37,9 @@ def self.find_or_create_by_name(name)
 end
 
 def print_songs
-  self.songs.each {|song|
-    puts song.name
+  songs
+  @songs.each {|track|
+    puts track.name
   }
 end
 
