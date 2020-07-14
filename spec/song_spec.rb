@@ -1,5 +1,7 @@
+require "pry"
 describe 'Song' do
-  
+
+
   before(:example) {
     Song.class_variable_set(:@@all, [])
   }
@@ -47,7 +49,6 @@ describe 'Song' do
     it 'associates new song instance with the artist from the filename' do
       Artist.class_variable_set("@@all",[])
       file_name = 'Michael Jackson - Black or White - pop.mp3'
-
       new_instance = Song.new_by_filename(file_name)
       expect(new_instance.artist.name).to eq('Michael Jackson')
       expect(Artist.all.size).to eq(1)
@@ -61,17 +62,16 @@ describe 'Song' do
 
       song = Song.new('Man in the Mirror')
       song.artist_name = "Michael Jackson"
+
       expect(song.artist).to be_an(Artist)
       expect(song.artist.name).to eq("Michael Jackson")
 
       song_2 = Song.new('Thriller')
       song_2.artist_name = "Michael Jackson"
+
       expect(song_2.artist).to be_an(Artist)
       expect(song_2.artist.name).to eq("Michael Jackson")
-
       expect(Artist.all.length).to eq(1)
     end
   end
 end
-
-
