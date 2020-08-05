@@ -24,11 +24,6 @@ class Artist
   
   def self.find_or_create_by_name(name)
     self.find_by_name(name) || self.create_by_name(name)
-    # if self.find(name)
-    #   self.find(name)
-    # else
-    #   self.create(name)
-    # end
   end
   
   def self.find_by_name(name)
@@ -37,8 +32,6 @@ class Artist
   
   def self.create_by_name(name)
     Artist.new(name)
-    # artist = self.new(name).save
-    # artist
   end
   
   def save 
