@@ -2,11 +2,11 @@ require 'pry'
 
 class Artist
 
-  @@allArtists = []
+  @@all = []
 
   def initialize(name)
     @name = name
-    @@allArtists << self
+    @@all << self
     @songs = []
   end
 
@@ -30,19 +30,17 @@ class Artist
   end
 
   def self.all
-    @@allArtists.uniq
+    @@all.uniq
   end
 
   def print_songs
-    rArray = []
     @songs.each do | selectedSong |
-      rArray << selectedSong.name
+      puts selectedSong.name
     end
-    return rArray
   end
 
   def self.find_or_create_by_name(inputName)
-    @@allArtists.each do | selectedArtist |
+    @@all.each do | selectedArtist |
       if (selectedArtist.name == inputName)
         return selectedArtist
       end

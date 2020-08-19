@@ -2,11 +2,11 @@ require 'pry'
 
 class Song
 
-  @@allSongs = []
+  @@all = []
 
   def initialize(inputName)
     @name = inputName
-    @@allSongs << self
+    @@all << self
   end
 
   def name=(inputName)
@@ -36,7 +36,7 @@ class Song
       end
     end
     newArtist = Artist.new(inputName)
-    self.artist=(inputName)
+    self.artist=(newArtist)
   end
 
   def artist_name
@@ -44,18 +44,15 @@ class Song
   end
 
   def self.all
-    @@allSongs
+    @@all
   end
 
   def self.new_by_filename(inputFile)
     inputFile = inputFile.split(" - ")
     songName = inputFile[1]
     newSong = Song.new(songName)
-    Artist.all.each do | selectedArtist |
-      if (selectedArtist.name == inputFile[0])
-        newSong.artist=(selectedArtist)
-      end
-    end
+    newSong.artist_name=(inputFile[0])
+    #binding.pry
     return newSong
   end
 
