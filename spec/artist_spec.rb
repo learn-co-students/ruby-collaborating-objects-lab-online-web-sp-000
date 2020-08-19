@@ -1,3 +1,6 @@
+require 'pry'
+
+
 describe 'Artist' do
 
   before(:example) {
