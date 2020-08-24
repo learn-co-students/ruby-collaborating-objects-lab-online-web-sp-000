@@ -1,4 +1,4 @@
-class Mp3_importer
+class Mp3importer
 
 attr_accessor :path
 
