@@ -1,4 +1,4 @@
-class Mp3importer
+class MP3Importer
 
 attr_accessor :path
 
@@ -11,6 +11,6 @@ def files
 
 end
 
-def Mp3_importer
+def import
 end
 end
