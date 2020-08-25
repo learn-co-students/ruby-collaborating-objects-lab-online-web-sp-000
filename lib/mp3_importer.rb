@@ -8,7 +8,7 @@ def initialize(path)
 end
 
 def files
-    binding.pry
+    #binding.pry
     Dir.entries(path).select do |file|
      file.size > 2 
     end
