@@ -36,12 +36,10 @@ class Artist
 
     def self.create_by_name(name)
         artist = self.new(name)
-        #New instance of an artist by the artist name given 
-        artist.name = name
-        #Assigns the instance variable the proper name
-        artist.save
-        #Saves the artist to the All array
-        artist
+        #New instance of an artist by the artist name given; save to all happens on initialization
+        #Name assignment also happens on initialization with the name argument passed in at the method call
+        #So you only need this line of code
+        #artist
         #Returns the artist
     end 
 

@@ -20,7 +20,8 @@ class MP3Importer
     def import 
         files 
         #Runs the "files" method to grab all the files from the path given at initialization.
-        files.each {|file| song.new_by_filename(file)}
+        files.each {|file| Song.new_by_filename(file)}
         #Applies the Song method new_by_filename to each file and instances them as Songs.
+        #Note: since this is calling to a class it needs to be capitalized/formatted as a class
     end 
 end 

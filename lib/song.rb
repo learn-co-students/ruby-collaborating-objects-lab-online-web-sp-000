@@ -25,20 +25,26 @@ class Song
     @@all
     #Returns all the Song instances
    end 
-   
+
    def self.new_by_filename(file)
         file_array = file.gsub(".mp3", "").split(" - ")
         #Gsub is better than delete, takes two arguments, first one the material to delete, second 
-        artist_name = file_array[0]
+        artist = file_array[0]
         name = file_array[1]
         #Assigning variable names to each part of the array
-        self.new(name)
-        #self.artist_name = artist_name
+        song = self.new(name)
+        #New instance of Song by the name given from the file
+        song.artist_name = artist
+        #Since artist_name= is an instance variable, you need to call it on an instance
+        #Meaning that self.new can't just exist, it needs to be song = 
+        song
+        #Return the song instance you just created
+        #binding.pry
    end 
 
    def artist_name=(name)
-    self.artist = Artist.find_or_create_by_name(name)
-    #Theoretically should create an artist instance based on the name?
-    binding.pry
-   end 
+     self.artist = Artist.find_or_create_by_name(name).add_song(self)
+     #Theoretically should create an artist instance based on the name?
+     #And save the song to that artist's songs array thingie.
+     end 
 end 
