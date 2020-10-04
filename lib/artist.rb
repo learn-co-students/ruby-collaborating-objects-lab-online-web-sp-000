@@ -1,4 +1,5 @@
 class Artist
+  
   attr_accessor :name
   
   @@all = []
@@ -17,20 +18,15 @@ class Artist
   end
   
   def songs
-    Song.all.select{|song| song.artist == self}
+    Song.all.select{|s| s.artist == self}
   end
   
   def self.find_or_create_by_name(name)
     artist = self.all.detect{|a| a.name == name}
-    artist ? artist : self.new(name)
+    artist.nil? ? Artist.new(name) : artist
   end
   
   def print_songs
-    Song.all.each do |song|
-      if song.artist == self
-        puts song.name
-      end 
-    end
+    songs.each{|s| puts s.name}
   end
-  
 end
