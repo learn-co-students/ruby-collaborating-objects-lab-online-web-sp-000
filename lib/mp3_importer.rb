@@ -1,14 +1,19 @@
-require "pry"
 class MP3Importer
 
-  attr_accessor :title, :artist, :genre
+  attr_accessor :path
 
   def initialize(filepath)
-
+    @path = filepath
   end
 
-  def create_from_filename(filename)
+  def files
+    @files = Dir.glob("#{path}/*.mp3").collect{ |file| file.sub("#{path}/", "") }
+  end
 
+  def import
+    files.each do |file|
+      Song.new_by_filename(file)
+    end
   end
 
 end
