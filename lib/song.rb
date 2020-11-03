@@ -32,7 +32,6 @@ class Song
    def artist_name=(artist)
     #accepts an artist's name, finds or creates an Artist's instance and assigns it to the Song's artist attribute
     set = Artist.find_or_create_by_name(artist)
-    p set
     self.artist = set
   end
   
