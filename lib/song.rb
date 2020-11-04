@@ -8,8 +8,7 @@ class Song
 	end
 
 	def self.new_by_filename(filename)
-		artist_name, song_name = filename.split(" - ")
-		new(song_name).tap{|song| song.artist_name = artist_name}
+		new(filename.split(" - ")[1]).tap{|song| song.artist_name = filename.split(" - ")[0]}
 	end
 
 	def initialize(name)
