@@ -6,7 +6,7 @@ class Artist
   
   def initialize(name)
     @name = name
-    @@all << self
+    self.class.all << self
   end
   
   def self.all
@@ -22,8 +22,7 @@ class Artist
   end
   
   def self.find_or_create_by_name(name)
-    artist = self.all.detect{|a| a.name == name}
-    artist.nil? ? Artist.new(name) : artist
+    self.all.detect{|a| a.name == name} || self.new(name)
   end
   
   def print_songs
