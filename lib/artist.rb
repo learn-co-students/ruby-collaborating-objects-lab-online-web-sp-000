@@ -1,3 +1,5 @@
+require 'pry'
+
 class Artist 
   
   attr_accessor :name 
@@ -26,6 +28,7 @@ class Artist
   end
   
   def print_songs
+    binding.pry
     puts self.songs
   end
   
