@@ -28,8 +28,7 @@ class Artist
   end
   
   def print_songs
-    binding.pry
-    puts self.songs
+    self.songs.each {|song| puts song.name}
   end
   
 end
