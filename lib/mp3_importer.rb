@@ -16,9 +16,8 @@ class MP3Importer
 
   def import
     files
-    @files.each.map do |x|
-      x.gsub(/"\w* \w* - /,"")
-    end
+    newfile = @files[0].gsub(/ - [a-z](.*)/, "")
+    newfile = @files[0].gsub(/^(.*)- /, "")
     binding.pry
   end
 
