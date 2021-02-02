@@ -1,6 +1,7 @@
 require 'pry'
 
 class MP3Importer
+
   attr_accessor :path
 
   def initialize(path)
@@ -16,12 +17,8 @@ class MP3Importer
 
   def import
     files
-    mod_files = @files
-    mod_files.each do |x|
-      x.gsub!(/- ([^-]+) -/)
-    end
+    mod_files = @files.gsub(/"\w* \w*/,"")
     binding.pry
   end
-
 
 end

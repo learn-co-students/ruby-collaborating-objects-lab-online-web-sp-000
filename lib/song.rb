@@ -26,6 +26,12 @@ class Song
     end
   end
 
+  def initialize(name)
+    @name = name
+  end
 
+  def artist
+    self.artist.name
+  end
 
 end
