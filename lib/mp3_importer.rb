@@ -10,14 +10,15 @@ class MP3Importer
 
   def files
     files = Dir.entries(@path)
-    files.pop
-    files.pop
+    files.keep_if{|x| x.include?(".mp3")}
     @files = files
   end
 
   def import
     files
-    mod_files = @files.gsub(/\w/,"")
+    @files.each.map do |x|
+      x.gsub(/"\w* \w* - /,"")
+    end
     binding.pry
   end
 
