@@ -17,7 +17,7 @@ class MP3Importer
 
   def import
     files
-    mod_files = @files.gsub(/"\w* \w*/,"")
+    mod_files = @files.gsub(/\w/,"")
     binding.pry
   end
 

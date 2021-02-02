@@ -31,7 +31,9 @@ class Song
   end
 
   def artist
-    self.artist.name
+  end
+
+  def self.new_by_filename
   end
 
 end
