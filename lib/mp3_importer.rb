@@ -17,9 +17,10 @@ class MP3Importer
   def import
     files
     @files.each do |x|
-       rename1 = x.gsub(/ - [a-z](.*)/, "")
-       rename2 = rename1.gsub(/^(.*)- /, "")
-       Song.new_by_filename(rename2)
+       #rename1 = x.gsub(/ - [a-z](.*)/, "")
+       #rename2 = rename1.gsub(/^(.*)- /, "")
+       split_file = x.split(" - ")
+       Song.new_by_filename(split_file[1])
     end
   end
 
