@@ -15,3 +15,8 @@ class Song
     @@all 
   end 
 end 
+
+# "Action Bronson - Larry Csonka - indie.mp3")
+# "Real Estate - Green Aisles - country.mp3")
+# "Real Estate - It's Real - hip-hop.mp3")
+# "Thundercat - For Love I Come - dance.mp3") 
