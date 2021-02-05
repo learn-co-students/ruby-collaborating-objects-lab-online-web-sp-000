@@ -2,21 +2,34 @@ class Song
   attr_accessor :name, :artist 
    @@all = [] 
    
-  def initialize(name)
+  def initialize
     @name = name 
     save 
   end
   
    def save 
-    @@all <<self 
+    @@all <<self
   end 
   
   def self.all 
     @@all 
   end 
-end 
+  
+  def artist_name 
+    if self.artist
+    self.artist.name
+    
+  end 
+  end 
+  
+  def self.new_by_filename(filename) 
+    song = self.new 
+    song.title = filename.split(" - ")[1]
+    song.artist 
+    end 
+end
 
 # "Action Bronson - Larry Csonka - indie.mp3")
-# "Real Estate - Green Aisles - country.mp3")
+# "Real Estate - Green Aisles - country.mp3") 
 # "Real Estate - It's Real - hip-hop.mp3")
-# "Thundercat - For Love I Come - dance.mp3") 
+# "Thundercat - For Love I Come - dance.mp3")  
