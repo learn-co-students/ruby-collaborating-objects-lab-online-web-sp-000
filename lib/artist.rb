@@ -27,14 +27,14 @@ end
   end
   
   def self.find_or_create_by_name(artist)
-    self.find(artist) || self.create_by_name
-    artist.name 
-  end 
+    self.find(artist) ? self.find(artist) : self.new(artist) 
+    end 
 
   def self.find(artist)
-    self.all.each do |artist| 
-      artist == artist.name 
+    self.all.find do |something| 
+      artist == something.name 
   end 
+end 
 
   def create_by_name(artist)  
     self.all.each do |artist| 
@@ -44,7 +44,7 @@ end
 
   def print_songs
     songs = self.all.artist.each do |song|
-    puts artist.songs 
+    artist.songs 
   end
 end 
   
@@ -52,5 +52,4 @@ end
     song = self.new 
     song.title = filename.split
   end 
-end 
 end 
