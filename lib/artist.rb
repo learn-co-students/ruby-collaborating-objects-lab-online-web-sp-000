@@ -1,4 +1,4 @@
-#require 'pry'
+require 'pry'
 
 class Artist 
   attr_accessor :name, :artist 
@@ -9,11 +9,14 @@ class Artist
     save 
   end 
   
-  
-  
   def self.all 
     @@all 
   end 
+  
+  
+def save
+  @@all << self
+end
   
   def add_song(song)
     song.artist = self
@@ -21,16 +24,12 @@ class Artist
   
   def songs 
     Song.all.select {|song| song.artist == self}
-  end 
-#   song 
+  end
   
   def self.find_or_create_by_name(artist)
     self.find(artist) || self.create_by_name
     artist.name 
   end 
-
-      # artist_1 = Artist.find_or_create_by_name("Michael Jackson")
-      # artist_2 = Artist.find_or_create_by_name("Michael Jackson")
 
   def self.find(artist)
     self.all.each do |artist| 
@@ -38,7 +37,10 @@ class Artist
   end 
 
   def create_by_name(artist)  
-  end 
+    self.all.each do |artist| 
+    name == artist.name 
+  end
+end 
 
   def print_songs
     songs = self.all.artist.each do |song|
@@ -51,8 +53,4 @@ end
     song.title = filename.split
   end 
 end 
-
-def save
-  @@all << self 
-end
 end 
