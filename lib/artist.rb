@@ -39,17 +39,18 @@ end
   def create_by_name(artist)  
     self.all.each do |artist| 
     name == artist.name 
+    binding.pry
   end
 end 
 
   def print_songs
-    songs = self.all.artist.each do |song|
+     songs = self.all.artist.each do |song|
     artist.songs 
-  end
+  end 
 end 
   
-  def new_by_filename(filename)
-    song = self.new 
-    song.title = filename.split
-  end 
+def new_by_filename(filename)
+  #   song = self.new 
+  #   song.title = filename.split
+end 
 end 
