@@ -15,12 +15,16 @@ class MP3Importer
   def save 
     @@all << self 
   end 
-  
-  def self.files 
-  end 
 
   def self.import 
-   Dir.glob("*.mp3") {|filename|
-   Song.new_by_filename(some_filename)}
+   path = Dir.glob("*.mp3") {|filename|}
+   puts filename
+   #Song.new_by_filename(some_filename)}
   end 
+  
+  def self.files(filename) 
+    filename.each.split(" - ")
+    puts MP3 
+  end 
+end 
 end 
