@@ -1,10 +1,10 @@
 require 'pry'
 
-class MP3_Importer
-  attr_accessor :filename, :song 
+class MP3Importer
+  attr_accessor :path, :song 
   
-  def initialize(filename)
-    @filename = filename 
+  def initialize(path)
+    @path = path 
     @@all = [] 
   end 
   
