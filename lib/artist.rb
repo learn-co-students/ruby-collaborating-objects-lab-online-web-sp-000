@@ -33,24 +33,20 @@ end
   def self.find(artist)
     self.all.find do |something| 
       artist == something.name 
+#       pry(Artist)> self => Artist
+# [2] pry(Artist)> something => #<Artist:0x00000000021a7668 @name="Michael Jackson">
+# [3] pry(Artist)> artist => "Michael Jackson"
   end 
 end 
 
-  def create_by_name(artist)  
-    self.all.each do |artist| 
-    name == artist.name 
-    binding.pry
-  end
-end 
-
   def print_songs
-     songs = self.all.artist.each do |song|
-    artist.songs 
+    self.songs.find do|something|
+    puts something.name
   end 
 end 
   
 def new_by_filename(filename)
-  #   song = self.new 
+  #   song = self.new
   #   song.title = filename.split
 end 
 end 
