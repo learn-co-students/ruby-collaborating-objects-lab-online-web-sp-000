@@ -18,7 +18,6 @@ class Song
   def artist_name 
     if self.artist
     self.artist.name
-    
   end 
   end 
   
@@ -26,6 +25,6 @@ class Song
     song = self.new 
     song.title = filename.split(" - ")[1]
     song.artist 
-    end 
+  end 
 end
 

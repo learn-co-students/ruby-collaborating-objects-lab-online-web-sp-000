@@ -11,13 +11,16 @@ class MP3Importer
  
   def files
     array_of_entries = Dir.entries(path)
-    array_of_entries.delete(".")
+    array_of_entries.delete(".") 
     array_of_entries.delete("..")
     array_of_entries
     end 
 
 def import
-  #filename = array_of_entries
-  self.new_by_filename(filename)
+  counter = 1 
+  while counter <= 4
+  Song.new_by_filename 
+    counter +=1 
+  end
 end 
 end 
