@@ -1,30 +1,23 @@
 require 'pry'
 
+ 
 class MP3Importer
   attr_accessor :path, :song 
   
   def initialize(path)
     @path = path 
-    @@all = [] 
+    #@@all = [] 
   end 
-  
-  def self.all 
-    @@all 
-  end 
-  
-  def save 
-    @@all << self 
-  end 
+ 
+  def files
+    array_of_entries = Dir.entries(path)
+    array_of_entries.delete(".")
+    array_of_entries.delete("..")
+    array_of_entries
+    end 
 
-  def self.import 
-   path = Dir.glob("*.mp3") {|filename|}
-   puts filename
-   #Song.new_by_filename(some_filename)}
-  end 
-  
-  def self.files(filename) 
-    filename.each.split(" - ")
-    puts MP3 
-  end 
+def import
+  #filename = array_of_entries
+  self.new_by_filename(filename)
 end 
 end 
