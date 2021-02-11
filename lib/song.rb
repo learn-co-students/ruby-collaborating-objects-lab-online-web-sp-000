@@ -10,7 +10,7 @@ class Song
   end
   
    def save 
-    @@all <<self 
+    @@all<<self
   end 
   
   def self.all 
@@ -20,13 +20,11 @@ class Song
   def self.new_by_filename(filename)
      song = self.new(name)
     song.name = filename.split(" - ")[1]
-     binding.pry 
     song.artist 
   end 
   
   def artist_name=artist 
     if self.artist
-    #am I really creating a new one?
     self.artist.name
   end 
   end 
