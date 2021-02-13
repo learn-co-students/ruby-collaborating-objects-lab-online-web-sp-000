@@ -1,15 +1,17 @@
-class Artist
-
 require 'pry'
 
-  attr_accessor :name, :songs
+class Artist
+  attr_accessor :name, :song
 
   @@all = []
 
   def initialize(name)
     @name = name
+    save
+  end
+
+  def save
     @@all << self
-    @songs = []
   end
 
   def self.all
@@ -17,16 +19,12 @@ require 'pry'
   end
 
   def add_song(song)
-    @songs << song
+    song.artist = self
+    self.song
+    # binding.pry
   end
 
-  def self.find_or_create_by_name(name)
-    @@all.detect {|artist| artist.name == name} || artist = Artist.new(name)
+  def songs
+    Song.all.collect {|song| song.artist == self}
   end
-
-  def print_songs
-    puts @songs.collect {|song|song.name}
-  end
-
-
 end
