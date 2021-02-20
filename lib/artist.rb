@@ -33,11 +33,8 @@ end
   def self.find(artist)
     self.all.find do |something| 
       artist == something.name 
-#       pry(Artist)> self => Artist
-# [2] pry(Artist)> something => #<Artist:0x00000000021a7668 @name="Michael Jackson">
-# [3] pry(Artist)> artist => "Michael Jackson"
+    end 
   end 
-end 
 
   def print_songs
     self.songs.find do|something|
