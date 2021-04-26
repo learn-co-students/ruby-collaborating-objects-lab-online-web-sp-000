@@ -1,6 +1,11 @@
+require "pry"
+
 class MP3Importer
-  def initialize(file_path)
   
+  #@files = []
+  def initialize(file_path)
+    binding.pry
+   # @files << file_path
   end 
   
   def files

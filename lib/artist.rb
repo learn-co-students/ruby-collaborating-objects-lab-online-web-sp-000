@@ -20,9 +20,12 @@ class Artist
     Song.all.select {|song| song.artist == self}
   end 
   
-  def find_or_create_by_name(name)
-    #takes in a name and either finds the arttist instance or creates a new one, return will be an artist instance with a name attribute
-    
+  def self.find_or_create_by_name(name)
+    if  @@all.any? {|artist| artist.name == name}
+      @@all.detect {|artist| artist.name == name}
+    else 
+      artist = self.new(name)
+    end
   end 
   
   def print_songs
