@@ -5,6 +5,9 @@ class MP3Importer
   
   def initialize(file_path)
     @path = file_path
+    file_path.chomp("./spec")
+    #binding.pry
+   # @files << file_path
   end 
   
   def files
