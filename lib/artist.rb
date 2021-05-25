@@ -27,10 +27,6 @@ class Artist
 
     def self.create_by_name(name)
         Artist.new(name)
-        # artist = self.new(name)
-        # artist.name = name
-        # artist.save
-        # artist
     end
 
     def self.find_by_name(name)
