@@ -1,10 +1,11 @@
+require 'pry'
 class MP3Importer
     #parse all filenames and send filenames to Song
     #relies on Song
     attr_accessor :path, :files
     
-    def intialize(path)
-        @path = path
+    def initialize(path)
+        @path = path  
     end
 
     def files
