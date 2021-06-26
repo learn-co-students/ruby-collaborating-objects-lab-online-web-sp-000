@@ -3,12 +3,12 @@ class Artist
   
   @@all = []
   
-    def initialize(name)
-      @name = name
+    def initialize(name) #accepts a name for the artist
+      @name = name #sets the artist name
       @@all << self
     end
     
-    def self.all
+    def self.all #returns all existing Artist instances
       @@all
     end
     
@@ -16,26 +16,27 @@ class Artist
       @@all
     end
     
-    def add_song(song)
+    def add_song(song) #keeps track of an artist's songs
       song.artist = self
     end
     
-    def songs 
+    def songs # lists all songs that belong to this artist
       Song.all.select {|song| song.artist == self}
     end
     
-    def self.find_or_create_by_name(artist_name)
+    def self.find_or_create_by_name(artist_name) #always returns an Artist instance
       found_artist = self.all.find {|artist| artist.name == artist_name}
+      #finds or creates an artist by name maintaining uniqueness of objects by name property
      if found_artist
         found_artist
-      else
+      else #Creates new instance of Artist if none exist
         new_artist = self.new(artist_name)
         new_artist.save
         new_artist
       end
     end
     
-    def print_songs
+    def print_songs #lists all of the artist's songs
       songs.each do |song|
         puts song.name
       end
